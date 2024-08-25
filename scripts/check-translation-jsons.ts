@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+const { execSync } = require('node:child_process');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -123,16 +124,21 @@ const markdown = createTranslationProgessMarkdown({
 	totalTranslationCounts,
 });
 
-(async function formatTranslationProgress() {
-	const translationProgressPath = path.join(
-		__dirname,
-		"..",
-		"translation-progress.md",
-	);
+const translationProgressPath = path.join(
+	__dirname,
+	"..",
+	"translation-progress.md",
+);
 
-	// translation-progress is formatted via the CI/CD pipeline prior to running this script
-	fs.writeFileSync(translationProgressPath, markdown);
-})();
+fs.writeFileSync(translationProgressPath, markdown);
+
+try {
+	// Use npx to format the file with Biome
+	execSync(`npx biome format ${translationProgressPath}`, { stdio: 'inherit' });
+	console.info("Markdown formatted successfully using Biome.");
+} catch (error) {
+	console.error("Failed to format markdown using Biome.", error);
+}
 
 function validateNoExtraKeysInOther({
 	english,
