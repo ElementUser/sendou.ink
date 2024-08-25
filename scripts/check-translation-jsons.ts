@@ -1,8 +1,9 @@
 import fs from "node:fs";
-import prettier from "prettier";
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { format } from "@biomejs/biome";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -123,8 +124,7 @@ const markdown = createTranslationProgessMarkdown({
 	totalTranslationCounts,
 });
 
-// TODO: migrate to biome
-void prettier.format(markdown, { parser: "markdown" }).then((markdown) => {
+(async function formatTranslationProgress() {
 	const translationProgressPath = path.join(
 		__dirname,
 		"..",
@@ -132,7 +132,24 @@ void prettier.format(markdown, { parser: "markdown" }).then((markdown) => {
 	);
 
 	fs.writeFileSync(translationProgressPath, markdown);
-});
+
+	try {
+		const content = fs.readFileSync(translationProgressPath, "utf8");
+
+		// Format the content using Biome's API
+		const formattedContent = await format(content, {
+			filePath: translationProgressPath,
+		});
+
+		// Write the formatted content back to the file
+		fs.writeFileSync(translationProgressPath, formattedContent);
+
+		console.info("Markdown formatted successfully using Biome.");
+	} catch (error) {
+		console.error("Failed to format markdown using Biome.", error);
+	}
+})();
+
 
 function validateNoExtraKeysInOther({
 	english,
