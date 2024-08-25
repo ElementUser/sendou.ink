@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const { execSync } = require('node:child_process');
+const { execSync } = require("node:child_process");
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -134,7 +134,7 @@ fs.writeFileSync(translationProgressPath, markdown);
 
 try {
 	// Use npx to format the file with Biome
-	execSync(`npx biome format ${translationProgressPath}`, { stdio: 'inherit' });
+	execSync(`npx biome format ${translationProgressPath}`, { stdio: "inherit" });
 	console.info("Markdown formatted successfully using Biome.");
 } catch (error) {
 	console.error("Failed to format markdown using Biome.", error);
