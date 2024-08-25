@@ -2,11 +2,11 @@ import type { CSSProperties } from "react";
 
 export function ArrowLeftIcon({
 	className,
-  alt,
+	alt,
 	style,
 }: {
 	className?: string;
-  alt: string;
+	alt: string;
 	style?: CSSProperties;
 }) {
 	return (

@@ -1,4 +1,7 @@
-export function CheckInIcon({ className, alt }: { className?: string, alt: string }) {
+export function CheckInIcon({
+	className,
+	alt,
+}: { className?: string; alt: string }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

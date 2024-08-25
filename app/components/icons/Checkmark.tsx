@@ -5,7 +5,7 @@ export function CheckmarkIcon({
 	onClick,
 }: {
 	className?: string;
-  alt: string;
+	alt: string;
 	testId?: string;
 	onClick?: () => void;
 }) {

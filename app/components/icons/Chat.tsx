@@ -2,11 +2,11 @@ import type { CSSProperties } from "react";
 
 export function ChatIcon({
 	className,
-  alt,
+	alt,
 	style,
 }: {
 	className?: string;
-  alt: string;
+	alt: string;
 	style?: CSSProperties;
 }) {
 	return (

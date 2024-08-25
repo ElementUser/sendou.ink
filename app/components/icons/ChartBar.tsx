@@ -2,11 +2,11 @@ import type { CSSProperties } from "react";
 
 export function ChartBarIcon({
 	className,
-  alt,
+	alt,
 	style,
 }: {
 	className?: string;
-  alt: string
+	alt: string;
 	style?: CSSProperties;
 }) {
 	return (
