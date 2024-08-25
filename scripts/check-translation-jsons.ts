@@ -132,14 +132,14 @@ const markdown = createTranslationProgessMarkdown({
 		"translation-progress.md",
 	);
 
-	fs.writeFileSync(translationProgressPath, markdown);
-
 	try {
 		// Use npx to format the file with Biome (import/require does not work with devDependencies for some reason)
 		execSync(`npx biome format ${translationProgressPath}`, {
 			stdio: "inherit",
 		});
 		console.info("Markdown formatted successfully using Biome.");
+
+		fs.writeFileSync(translationProgressPath, markdown);
 	} catch (error) {
 		console.error("Failed to format markdown using Biome.", error);
 	}
