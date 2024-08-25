@@ -137,12 +137,15 @@ const markdown = createTranslationProgessMarkdown({
 		const content = fs.readFileSync(translationProgressPath, "utf8");
 
 		// Temporary workaround for typing
-		const format = (options: { code: string; filePath: string }): Promise<string> => 
-			(biomeFormat as any)(options);
+		const format = (options: {
+			code: string;
+			filePath: string;
+		}): Promise<string> => (biomeFormat as any)(options);
 
-		const formattedContent = await format({ code: content, 
-			filePath: translationProgressPath},
-		);
+		const formattedContent = await format({
+			code: content,
+			filePath: translationProgressPath,
+		});
 
 		// Write the formatted content back to the file
 		fs.writeFileSync(translationProgressPath, formattedContent);
