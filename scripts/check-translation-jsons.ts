@@ -2,7 +2,8 @@ import fs from "node:fs";
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { format as biomeFormat } from "@biomejs/biome";
+
+const biome = require('@biomejs/biome');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -140,7 +141,7 @@ const markdown = createTranslationProgessMarkdown({
 		const format = (options: {
 			code: string;
 			filePath: string;
-		}): Promise<string> => (biomeFormat as any)(options);
+		}): Promise<string> => biome.format(options);
 
 		const formattedContent = await format({
 			code: content,
