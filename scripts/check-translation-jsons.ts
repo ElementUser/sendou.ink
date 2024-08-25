@@ -124,12 +124,6 @@ const markdown = createTranslationProgessMarkdown({
 	totalTranslationCounts,
 });
 
-const translationProgressPath = path.join(
-	__dirname,
-	"..",
-	"translation-progress.md",
-);
-
 // Write markdown content to file and format file with Biome
 (async () => {
 	const translationProgressPath = path.join(
