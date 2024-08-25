@@ -2,7 +2,7 @@ import fs from "node:fs";
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { format } from "@biomejs/biome";
+import { format as biomeFormat } from "@biomejs/biome";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -136,10 +136,13 @@ const markdown = createTranslationProgessMarkdown({
 	try {
 		const content = fs.readFileSync(translationProgressPath, "utf8");
 
-		// Format the content using Biome's API
-		const formattedContent = await format(content, {
-			filePath: translationProgressPath,
-		});
+		// Temporary workaround for typing
+		const format = (options: { code: string; filePath: string }): Promise<string> => 
+			(biomeFormat as any)(options);
+
+		const formattedContent = await format({ code: content, 
+			filePath: translationProgressPath},
+		);
 
 		// Write the formatted content back to the file
 		fs.writeFileSync(translationProgressPath, formattedContent);
