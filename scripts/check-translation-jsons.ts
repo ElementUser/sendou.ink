@@ -439,6 +439,6 @@ Key: 🟢 = Done, 🟡 = In progress, 🔴 = Not started
 ${MDOverviewTable({ totalTranslationCounts })}
 
 ## Missing Keys
-  
+	
 ${MDMissingKeysList({ missingTranslations })}`;
 }
