@@ -959,6 +959,7 @@ function BuildAnalyzerPage() {
 
 interface StatChartProps {
 	statKey?: keyof AnalyzedBuild["stats"];
+  currentBuildValue: number;
 	subWeaponId?: SubWeaponId;
 	modifiedBy: AbilityType[];
 	title: string;
@@ -986,6 +987,7 @@ function StatChartPopover(props: StatChartProps) {
 
 function StatChart({
 	statKey,
+  currentBuildValue,
 	modifiedBy,
 	valueSuffix,
 	mainWeaponId,
@@ -1013,6 +1015,9 @@ function StatChart({
 				: [];
 	}, [statKey, modifiedBy, mainWeaponId, subWeaponId, distanceLabel]);
 
+  //TODO
+  // console.warn(chartOptions);
+
 	// prevent crash but this should not happen
 	if (chartOptions.length === 0) {
 		console.error("no chart options");
@@ -1022,6 +1027,7 @@ function StatChart({
 	return (
 		<Chart
 			options={chartOptions as any}
+      currentBuildValue={currentBuildValue}
 			headerSuffix={t("analyzer:abilityPoints.short")}
 			valueSuffix={valueSuffix}
 			xAxis="linear"
@@ -1391,6 +1397,7 @@ function StatCard({
 
 	const isStaticValue = typeof stat === "number" || typeof stat === "string";
 	const baseValue = isStaticValue ? stat : stat[0].baseValue;
+  const buildValue = isStaticValue ? stat : stat[0].value;
 
 	const showBuildValue = () => {
 		if (isStaticValue) return false;
@@ -1472,6 +1479,9 @@ function StatCard({
 							<div className="analyzer__stat-card__value__number">
 								{(stat as StatTuple)[showComparison ? 1 : 0].value}
 								{suffix}
+
+                {/*TODO: THIS IS THE VALUE OF INTEREST! */}
+                {/* {console.warn(stat[0].value)}  */}
 							</div>
 						</div>
 					) : null}
@@ -1484,6 +1494,7 @@ function StatCard({
 						<ModifiedByAbilities abilities={stat[0].modifiedBy} />
 						<StatChartPopover
 							statKey={stat[2]}
+              currentBuildValue={buildValue}
 							modifiedBy={modifiedBy}
 							title={title}
 							valueSuffix={suffix}
@@ -1646,6 +1657,7 @@ function DamageTable({
 										) ? (
 											<StatChartPopover
 												mainWeaponId={0}
+                        currentBuildValue={1}
 												modifiedBy={[]}
 												subWeaponId={(val as SubWeaponDamage).subWeaponId}
 												title={t(
