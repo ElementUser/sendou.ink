@@ -1,4 +1,4 @@
-export function SpeechBubbleIcon({ className }: { className?: string }) {
+export function SpeechBubbleIcon({ className, alt }: { className?: string, alt: string }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ export function SpeechBubbleIcon({ className }: { className?: string }) {
 			stroke="currentColor"
 			strokeWidth={2}
 		>
-			<title>Speech Bubble Icon</title>
+			{alt !== "" && <title>{alt}</title>}
 			<path
 				strokeLinecap="round"
 				strokeLinejoin="round"

@@ -142,6 +142,8 @@ export function SocialLink({
 }
 
 function SocialLinkIcon({ type }: Pick<SocialLinkProps, "type">) {
+  const { t } = useTranslation();
+
 	switch (type) {
 		case "twitch":
 			return <TwitchIcon />;
@@ -150,7 +152,7 @@ function SocialLinkIcon({ type }: Pick<SocialLinkProps, "type">) {
 		case "youtube":
 			return <YouTubeIcon />;
 		case "battlefy":
-			return <BattlefyIcon />;
+			return <BattlefyIcon alt={t("icons.battlefy")} />;
 		default:
 			assertUnreachable(type);
 	}

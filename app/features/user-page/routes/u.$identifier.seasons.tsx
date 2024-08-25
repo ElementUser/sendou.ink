@@ -699,7 +699,7 @@ function Match({
 }: {
 	match: SerializeFrom<typeof loader>["matches"]["value"][0];
 }) {
-	const { t } = useTranslation(["user"]);
+	const { t } = useTranslation(["user", "common"]);
 	const [, parentRoute] = useMatches();
 	invariant(parentRoute);
 	const layoutData = parentRoute.data as UserPageLoaderData;
@@ -778,7 +778,7 @@ function Match({
 			) : null}
 			{!match.isLocked ? (
 				<div className="u__season__match__sub-section">
-					<AlertIcon className="u__season__match__sub-section__icon" />
+					<AlertIcon className="u__season__match__sub-section__icon" alt={t("icons.alert", { ns: "common" })} />
 					{t("user:seasons.matchBeingProcessed")}
 				</div>
 			) : null}

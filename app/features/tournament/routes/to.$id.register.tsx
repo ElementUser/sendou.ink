@@ -65,7 +65,7 @@ export { loader, action };
 export default function TournamentRegisterPage() {
 	const user = useUser();
 	const isMounted = useIsMounted();
-	const { i18n } = useTranslation();
+	const { i18n, t } = useTranslation();
 	const tournament = useTournament();
 
 	const startsAtEvenHour = tournament.ctx.startTime.getMinutes() === 0;
@@ -120,7 +120,7 @@ export default function TournamentRegisterPage() {
 					</div>
 					<div className="tournament__by mt-2">
 						<div className="stack horizontal xs items-center">
-							<ClockIcon className="tournament__info__icon" />{" "}
+							<ClockIcon className="tournament__info__icon" alt={t("icons.clock")} />{" "}
 							{isMounted
 								? tournament.ctx.startTime.toLocaleString(i18n.language, {
 										timeZoneName: "short",
@@ -391,7 +391,7 @@ function RegistrationProgress({
 	members?: unknown[];
 	mapPool?: unknown[];
 }) {
-	const { i18n, t } = useTranslation(["tournament"]);
+	const { i18n, t } = useTranslation(["tournament", "common"]);
 	const tournament = useTournament();
 	const isMounted = useIsMounted();
 
@@ -446,6 +446,7 @@ function RegistrationProgress({
 								{step.completed ? (
 									<CheckmarkIcon
 										className="tournament__section__icon fill-success"
+                    alt={t("icons.checkmark", { ns: "common" })}
 										testId={`checkmark-icon-num-${i + 1}`}
 									/>
 								) : (

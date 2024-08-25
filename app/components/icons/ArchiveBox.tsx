@@ -1,4 +1,4 @@
-export function ArchiveBoxIcon({ className }: { className?: string }) {
+export function ArchiveBoxIcon({ className, alt }: { className?: string, alt: string }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ export function ArchiveBoxIcon({ className }: { className?: string }) {
 			stroke="currentColor"
 			className={className}
 		>
-			<title>Archive Box Icon</title>
+			{alt !== "" && <title>{alt}</title>}
 			<path
 				strokeLinecap="round"
 				strokeLinejoin="round"

@@ -2,9 +2,11 @@ import type { CSSProperties } from "react";
 
 export function ChartBarIcon({
 	className,
+  alt,
 	style,
 }: {
 	className?: string;
+  alt: string
 	style?: CSSProperties;
 }) {
 	return (
@@ -17,7 +19,7 @@ export function ChartBarIcon({
 			className={className}
 			style={style}
 		>
-			<title>Chart Bar Icon</title>
+			{alt !== "" && <title>{alt}</title>}
 			<path
 				strokeLinecap="round"
 				strokeLinejoin="round"

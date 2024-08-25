@@ -7,6 +7,7 @@ import { json } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
 import { formatDistance } from "date-fns";
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 import { Avatar } from "~/components/Avatar";
 import { Button } from "~/components/Button";
@@ -234,11 +235,13 @@ export default function PlusVotingPage() {
 function VotingTimingInfo(
 	data: Extract<PlusVotingLoaderData, { type: "timeInfo" }>,
 ) {
+  const { t } = useTranslation();
+
 	return (
 		<div className="stack md">
 			{data.voted ? (
 				<div className="plus-voting__alert">
-					<CheckmarkIcon /> You have voted
+					<CheckmarkIcon alt={t("icons.checkmark")} /> You have voted
 				</div>
 			) : null}
 			<div className="text-sm text-center">

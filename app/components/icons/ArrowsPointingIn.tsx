@@ -1,4 +1,4 @@
-export function ArrowsPointingInIcon({ className }: { className?: string }) {
+export function ArrowsPointingInIcon({ className, alt }: { className?: string, alt: string }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ export function ArrowsPointingInIcon({ className }: { className?: string }) {
 			stroke="currentColor"
 			className={className}
 		>
-			<title>Arrows Pointing In Icon</title>
+			{alt !== "" && <title>{alt}</title>}
 			<path
 				strokeLinecap="round"
 				strokeLinejoin="round"

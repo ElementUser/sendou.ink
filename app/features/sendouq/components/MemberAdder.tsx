@@ -22,7 +22,7 @@ export function MemberAdder({
 	inviteCode: string;
 	groupMemberIds: number[];
 }) {
-	const { t } = useTranslation(["q"]);
+	const { t } = useTranslation(["q", "common"]);
 	const [truster, setTruster] = React.useState<number>();
 	const fetcher = useFetcher<SendouQPreparingAction>();
 	const inviteLink = `${SENDOU_INK_BASE_URL}${sendouQInviteLink(inviteCode)}`;
@@ -61,7 +61,7 @@ export function MemberAdder({
 					<Button
 						variant={copySuccess ? "outlined-success" : "outlined"}
 						onClick={() => copyToClipboard(inviteLink)}
-						icon={copySuccess ? <CheckmarkIcon /> : <ClipboardIcon />}
+						icon={copySuccess ? <CheckmarkIcon alt={t("icons.checkmark", { ns: "common" })} /> : <ClipboardIcon alt={t("icons.clipboard", { ns: "common" })} />}
 						aria-label="Copy to clipboard"
 					/>
 				</div>

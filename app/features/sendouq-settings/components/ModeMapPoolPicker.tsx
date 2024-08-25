@@ -111,6 +111,7 @@ export function ModeMapPoolPicker({
 }
 
 function MapSlot({ number, picked }: { number: number; picked: boolean }) {
+  const { t } = useTranslation();
 	return (
 		<div
 			className={clsx("map-pool-picker__slot", {
@@ -118,7 +119,7 @@ function MapSlot({ number, picked }: { number: number; picked: boolean }) {
 			})}
 		>
 			{picked ? (
-				<CheckmarkIcon className="map-pool-picker__slot__icon" />
+				<CheckmarkIcon className="map-pool-picker__slot__icon" alt={t("icons.checkmark")} />
 			) : (
 				number
 			)}
@@ -143,7 +144,7 @@ function MapButton({
 	wiggle?: boolean;
 	testId: string;
 }) {
-	const { t } = useTranslation(["game-misc"]);
+	const { t } = useTranslation(["game-misc", "common"]);
 
 	return (
 		<div className="stack items-center relative">
@@ -162,6 +163,7 @@ function MapButton({
 			{selected ? (
 				<CheckmarkIcon
 					className="map-pool-picker__map-button__icon"
+          alt={t("icons.checkmark", { ns: "common" })}
 					onClick={onClick}
 				/>
 			) : null}

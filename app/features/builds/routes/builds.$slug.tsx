@@ -289,7 +289,7 @@ export default function WeaponsBuildsPage() {
 						{
 							id: "ability",
 							text: t("builds:filters.type.ability"),
-							icon: <BeakerFilledIcon />,
+							icon: <BeakerFilledIcon alt={t("icons.beakerFilled")} />,
 							onClick: () => handleFilterAdd("ability"),
 						},
 						{
@@ -301,7 +301,7 @@ export default function WeaponsBuildsPage() {
 						{
 							id: "date",
 							text: t("builds:filters.type.date"),
-							icon: <CalendarIcon />,
+							icon: <CalendarIcon alt={t("icons.calendar")} />,
 							onClick: () => handleFilterAdd("date"),
 							disabled: filters.some((filter) => filter.type === "date"),
 						},
@@ -312,7 +312,7 @@ export default function WeaponsBuildsPage() {
 					<LinkButton
 						to={weaponBuildStatsPage(data.slug)}
 						variant="outlined"
-						icon={<ChartBarIcon />}
+						icon={<ChartBarIcon alt={t("icons.chartBar")} />}
 						size="tiny"
 					>
 						{t("builds:linkButton.abilityStats")}

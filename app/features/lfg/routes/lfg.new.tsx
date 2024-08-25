@@ -44,7 +44,7 @@ export default function LFGNewPostPage() {
 		return (
 			<Main halfWidth className="stack items-center">
 				<h2 className="text-lg mb-4">{t("lfg:new.noMorePosts")}</h2>
-				<LinkButton to={LFG_PAGE} icon={<ArrowLeftIcon />}>
+				<LinkButton to={LFG_PAGE} icon={<ArrowLeftIcon alt={t("icons.arrowLeft")} />}>
 					{t("common:actions.goBack")}
 				</LinkButton>
 			</Main>

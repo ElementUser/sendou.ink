@@ -1,6 +1,7 @@
 import { useFetcher } from "@remix-run/react";
 import clsx from "clsx";
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 import { LinkButton } from "~/components/Button";
 import { Popover } from "~/components/Popover";
 import { SubmitButton } from "~/components/SubmitButton";
@@ -14,6 +15,7 @@ export function TournamentTeamActions() {
 	const tournament = useTournament();
 	const user = useUser();
 	const fetcher = useFetcher();
+  const { t } = useTranslation();
 
 	const status = tournament.teamMemberOfProgressStatus(user);
 
@@ -122,7 +124,7 @@ export function TournamentTeamActions() {
 	if (status.type === "WAITING_FOR_BRACKET") {
 		return (
 			<Container spaced>
-				<CheckmarkIcon className="tournament-bracket__quick-action__checkmark" />{" "}
+				<CheckmarkIcon className="tournament-bracket__quick-action__checkmark" alt={t("icons.checkmark")} />{" "}
 				<div>
 					Checked in, waiting on bracket
 					<Dots />

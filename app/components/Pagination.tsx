@@ -3,6 +3,7 @@ import { Button } from "~/components/Button";
 import { ArrowLeftIcon } from "~/components/icons/ArrowLeft";
 import { ArrowRightIcon } from "~/components/icons/ArrowRight";
 import { nullFilledArray } from "~/utils/arrays";
+import { useTranslation } from "react-i18next";
 
 export function Pagination({
 	currentPage,
@@ -17,10 +18,12 @@ export function Pagination({
 	previousPage: () => void;
 	setPage: (page: number) => void;
 }) {
+  const { t } = useTranslation();
+  
 	return (
 		<div className="stack sm horizontal items-center justify-center flex-wrap">
 			<Button
-				icon={<ArrowLeftIcon />}
+				icon={<ArrowLeftIcon alt={t("icons.arrowLeft")} />}
 				variant="outlined"
 				className="fix-rtl"
 				disabled={currentPage === 1}
@@ -40,7 +43,7 @@ export function Pagination({
 				{currentPage}/{pagesCount}
 			</div>
 			<Button
-				icon={<ArrowRightIcon />}
+				icon={<ArrowRightIcon alt={t("icons.arrowRight")} />}
 				variant="outlined"
 				className="fix-rtl"
 				disabled={currentPage === pagesCount}

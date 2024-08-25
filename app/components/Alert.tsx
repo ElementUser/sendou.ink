@@ -4,6 +4,7 @@ import { assertUnreachable } from "~/utils/types";
 import { AlertIcon } from "./icons/Alert";
 import { CheckmarkIcon } from "./icons/Checkmark";
 import { ErrorIcon } from "./icons/Error";
+import { useTranslation } from "react-i18next";
 
 export type AlertVariation = "INFO" | "WARNING" | "ERROR" | "SUCCESS";
 
@@ -36,15 +37,17 @@ export function Alert({
 }
 
 function Icon({ variation }: { variation: AlertVariation }) {
+  const { t } = useTranslation();
+  
 	switch (variation) {
 		case "INFO":
-			return <AlertIcon />;
+			return <AlertIcon alt={t("icons.alert")} />;
 		case "WARNING":
-			return <AlertIcon />;
+			return <AlertIcon alt={t("icons.alert")} />;
 		case "ERROR":
 			return <ErrorIcon />;
 		case "SUCCESS":
-			return <CheckmarkIcon />;
+			return <CheckmarkIcon alt={t("icons.checkmark")} />;
 		default:
 			assertUnreachable(variation);
 	}

@@ -1,4 +1,4 @@
-export function ArrowLongLeftIcon({ className }: { className?: string }) {
+export function ArrowLongLeftIcon({ className, alt }: { className?: string, alt: string }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ export function ArrowLongLeftIcon({ className }: { className?: string }) {
 			stroke="currentColor"
 			className={className}
 		>
-			<title>Arrow Long Left Icon</title>
+			{alt !== "" && <title>{alt}</title>}
 			<path
 				strokeLinecap="round"
 				strokeLinejoin="round"

@@ -200,7 +200,7 @@ function MapButton({
 	number?: number;
 	from?: "US" | "THEM" | "BOTH";
 }) {
-	const { t } = useTranslation(["game-misc"]);
+	const { t } = useTranslation(["game-misc", "common"]);
 
 	return (
 		<div className="stack items-center relative">
@@ -217,6 +217,7 @@ function MapButton({
 			{selected ? (
 				<CheckmarkIcon
 					className="map-pool-picker__map-button__icon"
+          alt={t("icons.checkmark", { ns: "common" })}
 					onClick={onClick}
 				/>
 			) : null}

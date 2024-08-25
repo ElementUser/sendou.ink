@@ -1,4 +1,4 @@
-export function BattlefyIcon() {
+export function BattlefyIcon({alt} : {alt: string}) {
 	return (
 		<svg
 			version="1.1"
@@ -11,7 +11,7 @@ export function BattlefyIcon() {
 			enableBackground="new 0 0 1152 1152"
 			xmlSpace="preserve"
 		>
-			<title>Battlefy Icon</title>
+			{alt !== "" && <title>{alt}</title>}
 			<path
 				display="none"
 				fill="#151B27"

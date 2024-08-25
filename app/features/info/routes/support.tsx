@@ -152,7 +152,7 @@ function SupportTable() {
 						</div>
 						<div>
 							{perk.tier === 1 ? (
-								<CheckmarkIcon className="support__checkmark" />
+								<CheckmarkIcon className="support__checkmark" alt={t("icons.checkmark")} />
 							) : null}
 						</div>
 						{perk.name === "badge" ? (
@@ -166,7 +166,7 @@ function SupportTable() {
 						) : (
 							<div>
 								{perk.tier <= 2 ? (
-									<CheckmarkIcon className="support__checkmark" />
+									<CheckmarkIcon className="support__checkmark" alt={t("icons.checkmark")} />
 								) : null}
 							</div>
 						)}
@@ -184,7 +184,7 @@ function SupportTable() {
 						) : (
 							<div>
 								{perk.tier <= 3 ? (
-									<CheckmarkIcon className="support__checkmark" />
+									<CheckmarkIcon className="support__checkmark" alt={t("icons.checkmark")} />
 								) : null}
 							</div>
 						)}

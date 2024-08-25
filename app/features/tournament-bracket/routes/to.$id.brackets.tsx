@@ -565,6 +565,7 @@ function MapPreparer({
 	const isMounted = useIsMounted();
 	const prepared = useTournamentPreparedMaps();
 	const tournament = useTournament();
+  const { t } = useTranslation();
 
 	const hasPreparedMaps = Boolean(
 		PreparedMaps.resolvePreparedForTheBracket({
@@ -593,6 +594,7 @@ function MapPreparer({
 				{hasPreparedMaps ? (
 					<CheckmarkIcon
 						className="fill-success w-6"
+            alt={t("icons.checkmark")}
 						testId="prepared-maps-check-icon"
 					/>
 				) : null}

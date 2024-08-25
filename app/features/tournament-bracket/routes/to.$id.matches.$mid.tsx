@@ -63,6 +63,7 @@ import {
 	matchSubscriptionKey,
 	tournamentTeamToActiveRosterUserIds,
 } from "../tournament-bracket-utils";
+import { useTranslation } from "react-i18next";
 
 import "../tournament-bracket.css";
 
@@ -590,6 +591,7 @@ export default function TournamentMatchPage() {
 	const { revalidate } = useRevalidator();
 	const tournament = useTournament();
 	const data = useLoaderData<typeof loader>();
+  const { t } = useTranslation();
 
 	React.useEffect(() => {
 		if (visibility !== "visible" || data.matchIsOver) return;
@@ -629,7 +631,7 @@ export default function TournamentMatchPage() {
 						variant="outlined"
 						size="tiny"
 						className="w-max"
-						icon={<ArrowLongLeftIcon />}
+						icon={<ArrowLongLeftIcon alt={t("icons.arrowLongLeft", { ns: "common" })} />}
 						testId="back-to-bracket-button"
 					>
 						Back to bracket

@@ -731,7 +731,7 @@ function ActionSectionWrapper({
 }
 
 function ScreenBanIcons({ banned }: { banned: boolean }) {
-	const { t } = useTranslation(["weapons"]);
+	const { t } = useTranslation(["weapons", "common"]);
 
 	return (
 		<div
@@ -740,7 +740,7 @@ function ScreenBanIcons({ banned }: { banned: boolean }) {
 			})}
 			data-testid={`screen-${banned ? "banned" : "allowed"}`}
 		>
-			{banned ? <CrossIcon /> : <CheckmarkIcon />}
+			{banned ? <CrossIcon /> : <CheckmarkIcon alt={t("icons.checkmark", { ns: "common" })} />}
 			<Image
 				path={specialWeaponImageUrl(SPLATTERCOLOR_SCREEN_ID)}
 				width={24}

@@ -1,4 +1,4 @@
-export function RefreshIcon({ className }: { className?: string }) {
+export function RefreshIcon({ className, alt }: { className?: string, alt: string }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -7,7 +7,7 @@ export function RefreshIcon({ className }: { className?: string }) {
 			viewBox="0 0 24 24"
 			stroke="currentColor"
 		>
-			<title>Refresh Icon</title>
+			{alt !== "" && <title>{alt}</title>}
 			<path
 				strokeLinecap="round"
 				strokeLinejoin="round"

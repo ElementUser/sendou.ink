@@ -1,4 +1,4 @@
-export function UploadIcon({ className }: { className?: string }) {
+export function UploadIcon({ className, alt }: { className?: string, alt: string }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ export function UploadIcon({ className }: { className?: string }) {
 			stroke="currentColor"
 			className={className}
 		>
-			<title>Upload Icon</title>
+			{alt !== "" && <title>{alt}</title>}
 			<path
 				strokeLinecap="round"
 				strokeLinejoin="round"

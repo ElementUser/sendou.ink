@@ -338,7 +338,7 @@ export function MapPoolStages({
 									<Button
 										key="select-all"
 										onClick={() => handleStageAdd(stageId)}
-										icon={<ArrowLongLeftIcon />}
+										icon={<ArrowLongLeftIcon alt={t("icons.arrowLongLeft", { ns: "common" })} />}
 										variant="minimal"
 										aria-label={t("common:actions.selectAll")}
 										title={t("common:actions.selectAll")}

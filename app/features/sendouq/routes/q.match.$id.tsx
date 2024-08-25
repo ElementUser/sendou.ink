@@ -751,7 +751,7 @@ function AfterMatchActions({
 	showWeaponsForm: boolean;
 	setShowWeaponsForm: (show: boolean) => void;
 }) {
-	const { t } = useTranslation(["q"]);
+	const { t } = useTranslation(["q", "common"]);
 	const data = useLoaderData<typeof loader>();
 	const lookAgainFetcher = useFetcher();
 
@@ -785,7 +785,7 @@ function AfterMatchActions({
 				) : null}
 				{showWeaponsFormButton ? (
 					<Button
-						icon={<ArchiveBoxIcon />}
+						icon={<ArchiveBoxIcon alt={t("icons.archiveBox", { ns: "common"})} />}
 						onClick={() => setShowWeaponsForm(!showWeaponsForm)}
 						variant={showWeaponsForm ? "destructive" : undefined}
 					>
