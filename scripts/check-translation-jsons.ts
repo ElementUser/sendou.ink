@@ -150,7 +150,6 @@ const markdown = createTranslationProgessMarkdown({
 	}
 })();
 
-
 function validateNoExtraKeysInOther({
 	english,
 	other,
