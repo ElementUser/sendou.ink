@@ -3,8 +3,6 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const biome = require("@biomejs/biome");
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -132,29 +130,8 @@ const markdown = createTranslationProgessMarkdown({
 		"translation-progress.md",
 	);
 
+	// translation-progress is formatted via the CI/CD pipeline prior to running this script
 	fs.writeFileSync(translationProgressPath, markdown);
-
-	try {
-		const content = fs.readFileSync(translationProgressPath, "utf8");
-
-		// Temporary workaround for typing
-		const format = (options: {
-			code: string;
-			filePath: string;
-		}): Promise<string> => biome.format(options);
-
-		const formattedContent = await format({
-			code: content,
-			filePath: translationProgressPath,
-		});
-
-		// Write the formatted content back to the file
-		fs.writeFileSync(translationProgressPath, formattedContent);
-
-		console.info("Markdown formatted successfully using Biome.");
-	} catch (error) {
-		console.error("Failed to format markdown using Biome.", error);
-	}
 })();
 
 function validateNoExtraKeysInOther({

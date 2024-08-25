@@ -23,5 +23,7 @@ jobs:
         run: bun run typecheck
       - name: Unit tests
         run: bun run test:unit:all
+      - name: Format markdown with Biome
+        run: npx biome format translation-progress.md
       - name: Check translations jsons
         run: bun run check-translation-jsons:no-write
